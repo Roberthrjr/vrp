@@ -1,4 +1,4 @@
-// BOTON EDITAR FARMACEUTICA
+// BOTON EDITAR HOSPITAL
 $(".tablas").on("click", ".btnEditarHospital", function(){
 
     var idHospital = $(this).attr("idHospital");
@@ -28,7 +28,7 @@ $(".tablas").on("click", ".btnEditarHospital", function(){
     })
 })
 
-// BOTON ELIMINAR FARMACEUTICA
+// BOTON ELIMINAR HOSPITAL
 $(".tablas").on("click", ".btnEliminarHospital", function(){
 
     var idHospital = $(this).attr("idHospital");

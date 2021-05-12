@@ -130,6 +130,8 @@
         echo '<script src="vista/js/plantilla.js"></script>';
         echo '<script src="vista/js/farmaceuticas.js"></script>';
         echo '<script src="vista/js/hospitales.js"></script>';
+        echo '<script src="vista/js/vacunas.js"></script>';
+        echo '<script src="vista/js/pacientes.js"></script>';
         echo '</body>'; 
 
     ?>
