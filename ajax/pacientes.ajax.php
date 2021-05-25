@@ -11,7 +11,8 @@ class AjaxPacientes{
     // SE CREA EL METODO AJAX EDITAR VACUNA
     public function ajaxEditarPaciente(){
 
-        $item = "id";
+        $item = "idpaciente";
+        
         $valor = $this->idPaciente;
 
         $respuesta = ControladorPacientes::ctrMostrarPacientes($item,$valor);

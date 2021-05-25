@@ -36,15 +36,13 @@ class ModeloPacientes{
     // SE CREA EL METODO PARA CREAR VACUNA
     static public function mdlCrearPaciente($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, apellido, tipdoc, numdoc, numcel, mail, enfermedad) VALUES (:nombre, :apellido, :tipdoc, :numdoc, :numcel, :mail, :enfermedad)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (numdoc, nombre, apellido, telefono, email) VALUES (:numdoc, :nombre, :apellido, :telefono, :email)");
 
+        $stmt->bindParam(":numdoc",$datos["numdoc"],PDO::PARAM_STR);
         $stmt->bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
         $stmt->bindParam(":apellido",$datos["apellido"],PDO::PARAM_STR);
-        $stmt->bindParam(":tipdoc",$datos["tipdoc"],PDO::PARAM_STR);
-        $stmt->bindParam(":numdoc",$datos["numdoc"],PDO::PARAM_STR);
-        $stmt->bindParam(":numcel",$datos["numcel"],PDO::PARAM_STR);
-        $stmt->bindParam(":mail",$datos["mail"],PDO::PARAM_STR);
-        $stmt->bindParam(":enfermedad",$datos["enfermedad"],PDO::PARAM_STR);
+        $stmt->bindParam(":telefono",$datos["telefono"],PDO::PARAM_STR);
+        $stmt->bindParam(":email",$datos["email"],PDO::PARAM_STR);
 
         if($stmt->execute()){
 
@@ -64,16 +62,14 @@ class ModeloPacientes{
     // SE CREA EL METODO PARA EDITAR VACUNA
     static public function mdlEditarPaciente($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, apellido=:apellido, tipdoc=:tipdoc, numdoc=:numdoc, numcel=:numcel, mail=:mail, enfermedad=:enfermedad  WHERE id=:id");
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET numdoc=:numdoc, nombre=:nombre, apellido=:apellido, telefono=:telefono, email=:email WHERE idpaciente=:idpaciente");
 
-        $stmt->bindParam(":id",$datos["id"],PDO::PARAM_STR);
+        $stmt->bindParam(":idpaciente",$datos["idpaciente"],PDO::PARAM_STR);
+        $stmt->bindParam(":numdoc",$datos["numdoc"],PDO::PARAM_STR);
         $stmt->bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
         $stmt->bindParam(":apellido",$datos["apellido"],PDO::PARAM_STR);
-        $stmt->bindParam(":tipdoc",$datos["tipdoc"],PDO::PARAM_STR);
-        $stmt->bindParam(":numdoc",$datos["numdoc"],PDO::PARAM_STR);
-        $stmt->bindParam(":numcel",$datos["numcel"],PDO::PARAM_STR);
-        $stmt->bindParam(":mail",$datos["mail"],PDO::PARAM_STR);
-        $stmt->bindParam(":enfermedad",$datos["enfermedad"],PDO::PARAM_STR);
+        $stmt->bindParam(":telefono",$datos["telefono"],PDO::PARAM_STR);
+        $stmt->bindParam(":email",$datos["email"],PDO::PARAM_STR);
 
         if($stmt->execute()){
 
@@ -93,9 +89,9 @@ class ModeloPacientes{
     // SE CREA EL METODO PARA ELIMINAR VACUNA
     static public function mdlEliminarPaciente($tabla,$datos){
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idpaciente = :idpaciente");
 
-        $stmt->bindParam(":id", $datos, PDO::PARAM_STR);
+        $stmt->bindParam(":idpaciente", $datos, PDO::PARAM_STR);
 
         if($stmt->execute()){
             

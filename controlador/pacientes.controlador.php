@@ -14,23 +14,21 @@ class ControladorPacientes{
 
     }
 
-    // SE CREA EL METODO PARA CREAR VACUNA
+    // SE CREA EL METODO PARA CREAR PACIENTE
     static public function ctrCrearPaciente(){
 
-        if(isset($_POST["nuevoPaciente"])){
+        if(isset($_POST["nuevoNumero"])){
 
-            if( preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["nuevoPaciente"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["nuevaApellido"])){
+            if( preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["nuevoNombre"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["nuevoApellido"])){
 
                     $tabla = "paciente";
 
-                    $datos = array( "nombre"=>$_POST["nuevoPaciente"],
-                                    "apellido"=>$_POST["nuevaApellido"],
-                                    "tipdoc"=>$_POST["nuevoTipdoc"],
-                                    "numdoc"=>$_POST["nuevoNumdoc"],
-                                    "numcel"=>$_POST["nuevoNumcel"],
-                                    "mail"=>$_POST["nuevoMail"],
-                                    "enfermedad"=>$_POST["nuevaEnfermedad"]);
+                    $datos = array( "numdoc"=>$_POST["nuevoNumero"],
+                                    "nombre"=>$_POST["nuevoNombre"],
+                                    "apellido"=>$_POST["nuevoApellido"],
+                                    "telefono"=>$_POST["nuevoTelefono"],
+                                    "email"=>$_POST["nuevoEmail"]);
 
                     $respuesta = ModeloPacientes::mdlCrearPaciente($tabla, $datos);
 
@@ -91,21 +89,19 @@ class ControladorPacientes{
     // SE CREA EL METODO PARA EDITAR VACUNAS
     static public function ctrEditarPaciente(){
 
-        if(isset($_POST["editarPaciente"])){
+        if(isset($_POST["editarNumero"])){
 
-            if( preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["editarPaciente"]) &&
+            if( preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["editarNombre"]) &&
                 preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["editarApellido"])){
 
                     $tabla = "paciente";
 
-                    $datos = array( "id"=>$_POST["idPaciente"],                    
-                                    "nombre"=>$_POST["editarPaciente"],
+                    $datos = array( "idpaciente"=>$_POST["idPaciente"],                    
+                                    "numdoc"=>$_POST["editarNumero"],
+                                    "nombre"=>$_POST["editarNombre"],
                                     "apellido"=>$_POST["editarApellido"],
-                                    "tipdoc"=>$_POST["editarTipdoc"],
-                                    "numdoc"=>$_POST["editarNumdoc"],
-                                    "numcel"=>$_POST["editarNumcel"],
-                                    "mail"=>$_POST["editarMail"],
-                                    "enfermedad"=>$_POST["editarEnfermedad"]);
+                                    "telefono"=>$_POST["editarTelefono"],
+                                    "email"=>$_POST["editarEmail"]);
 
                     $respuesta = ModeloPacientes::mdlEditarPaciente($tabla, $datos);
 

@@ -18,14 +18,12 @@ $(".tablas").on("click", ".btnEditarPaciente", function(){
         dataType: "json",
         success:function(respuesta){
 
-            $("#idPaciente").val(respuesta["id"]);
-            $("#editarPaciente").val(respuesta["nombre"]);
+            $("#idPaciente").val(respuesta["idpaciente"]);
+            $("#editarNumero").val(respuesta["numdoc"]);
+            $("#editarNombre").val(respuesta["nombre"]);
             $("#editarApellido").val(respuesta["apellido"]);
-            $("#editarTipdoc").val(respuesta["tipdoc"]);
-            $("#editarNumdoc").val(respuesta["numdoc"]);
-            $("#editarNumcel").val(respuesta["numcel"]);
-            $("#editarMail").val(respuesta["mail"]);
-            $("#editarEnfermedad").val(respuesta["enfermedad"]);
+            $("#editarTelefono").val(respuesta["telefono"]);
+            $("#editarEmail").val(respuesta["email"]);
             
         }
     })
