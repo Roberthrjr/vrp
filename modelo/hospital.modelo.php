@@ -36,13 +36,12 @@ class ModeloHospitales{
     // SE CREA EL METODO PARA CREAR HOSPITAL
     static public function mdlCrearHospital($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, direccion, telefono, email, contacto) VALUES (:nombre, :direccion, :telefono, :email, :contacto)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, direccion, telefono, email) VALUES (:nombre, :direccion, :telefono, :email)");
 
         $stmt->bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
         $stmt->bindParam(":direccion",$datos["direccion"],PDO::PARAM_STR);
         $stmt->bindParam(":telefono",$datos["telefono"],PDO::PARAM_STR);
         $stmt->bindParam(":email",$datos["email"],PDO::PARAM_STR);
-        $stmt->bindParam(":contacto",$datos["contacto"],PDO::PARAM_STR);
 
         if($stmt->execute()){
 
@@ -62,14 +61,13 @@ class ModeloHospitales{
     // SE CREA EL METODO PARA EDITAR HOSPITAL
     static public function mdlEditarHospital($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, direccion=:direccion, telefono=:telefono, email=:email, contacto=:contacto WHERE id=:id");
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, direccion=:direccion, telefono=:telefono, email=:email WHERE idhospital=:idhospital");
 
-        $stmt->bindParam(":id",$datos["id"],PDO::PARAM_STR);
+        $stmt->bindParam(":idhospital",$datos["idhospital"],PDO::PARAM_STR);
         $stmt->bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
         $stmt->bindParam(":direccion",$datos["direccion"],PDO::PARAM_STR);
         $stmt->bindParam(":telefono",$datos["telefono"],PDO::PARAM_STR);
         $stmt->bindParam(":email",$datos["email"],PDO::PARAM_STR);
-        $stmt->bindParam(":contacto",$datos["contacto"],PDO::PARAM_STR);
 
         if($stmt->execute()){
 
@@ -89,9 +87,9 @@ class ModeloHospitales{
     // SE CREA EL METODO PARA ELIMINAR HOSPITAL
     static public function mdlEliminarHospital($tabla,$datos){
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idhospital = :idhospital");
 
-        $stmt->bindParam(":id", $datos, PDO::PARAM_STR);
+        $stmt->bindParam(":idhospital", $datos, PDO::PARAM_STR);
 
         if($stmt->execute()){
             

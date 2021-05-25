@@ -41,7 +41,6 @@
               <th>Dirección</th>
               <th>telefono</th>
               <th>email</th>
-              <th>contacto</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -63,14 +62,13 @@
                         <td>'.$value["direccion"].'</td>
                         <td>'.$value["telefono"].'</td>
                         <td>'.$value["email"].'</td>
-                        <td>'.$value["contacto"].'</td>
                         <td>
                           <div class="btn-group">
-                            <button class="btn btn-warning btnEditarHospital" data-toggle="modal" data-target="#modalEditarHospital" idHospital="'.$value["id"].'">
+                            <button class="btn btn-warning btnEditarHospital" data-toggle="modal" data-target="#modalEditarHospital" idHospital="'.$value["idhospital"].'">
                               <i class="fas fa-pencil-alt"></i>
                             </button>
                           
-                            <button class="btn btn-danger btnEliminarHospital" idHospital="'.$value["id"].'">
+                            <button class="btn btn-danger btnEliminarHospital" idHospital="'.$value["idhospital"].'">
                               <i class="fas fa-times"></i>
                             </button>
                           </div>
@@ -153,18 +151,6 @@
                 </span>
               </div>
               <input type="email" class="form-control" name="nuevoEmail" placeholder="Correo Electrónico" required>
-            </div>
-          </div>
-
-          <!-- ENTRADA PARA EL CONTACTO -->
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-user-md"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" name="nuevoContacto" placeholder="Dato del Contacto" required>
             </div>
           </div>
 
@@ -260,18 +246,6 @@
                   </span>
                 </div>
                 <input type="email" class="form-control" id="editarEmail" name="editarEmail" required>
-              </div>
-            </div>
-            
-            <!-- ENTRADA PARA EL CONTACTO -->
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fas fa-user-md"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" id="editarContacto" name="editarContacto" required>
               </div>
             </div>
 

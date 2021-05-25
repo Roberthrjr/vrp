@@ -17,12 +17,11 @@ $(".tablas").on("click", ".btnEditarHospital", function(){
         dataType: "json",
         success:function(respuesta){
 
-            $("#idHospital").val(respuesta["id"]);
+            $("#idHospital").val(respuesta["idhospital"]);
             $("#editarHospital").val(respuesta["nombre"]);
             $("#editarDireccion").val(respuesta["direccion"]);
             $("#editarTelefono").val(respuesta["telefono"]);
             $("#editarEmail").val(respuesta["email"]);
-            $("#editarContacto").val(respuesta["contacto"]);
             
         }
     })

@@ -11,7 +11,7 @@ class AjaxHospitales{
     // SE CREA EL METODO AJAX EDITAR HOSPITAL
     public function ajaxEditarHospital(){
 
-        $item = "id";
+        $item = "idhospital";
         $valor = $this->idHospital;
 
         $respuesta = ControladorHospitales::ctrMostrarHospitales($item,$valor);

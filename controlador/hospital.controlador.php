@@ -6,7 +6,7 @@ class ControladorHospitales{
     // SE CREA EL METODO MOSTRAR HOSPITAL
     static public function ctrMostrarHospitales($item,$valor){
 
-        $tabla = "hospitales";
+        $tabla = "hospital";
 
         $respuesta = ModeloHospitales::mdlMostrarHospitales($tabla,$item,$valor);
 
@@ -19,17 +19,14 @@ class ControladorHospitales{
 
         if(isset($_POST["nuevoHospital"])){
 
-            if( preg_match('/^[()\-0-9 ]+$/', $_POST["nuevoTelefono"]) && 
-			    preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["nuevoEmail"]) &&
-                preg_match('/^[#\.\-a-zA-Z0-9ñÑ ]+$/', $_POST["nuevaDireccion"])){
+            if( preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["nuevoEmail"])){
 
-                    $tabla = "hospitales";
+                    $tabla = "hospital";
 
                     $datos = array( "nombre"=>$_POST["nuevoHospital"],
                                     "direccion"=>$_POST["nuevaDireccion"],
                                     "telefono"=>$_POST["nuevoTelefono"],
-                                    "email"=>$_POST["nuevoEmail"],
-                                    "contacto"=>$_POST["nuevoContacto"]);
+                                    "email"=>$_POST["nuevoEmail"]);
 
                     $respuesta = ModeloHospitales::mdlCrearHospital($tabla, $datos);
 
@@ -92,18 +89,15 @@ class ControladorHospitales{
 
         if(isset($_POST["editarHospital"])){
 
-            if( preg_match('/^[()\-0-9 ]+$/', $_POST["editarTelefono"]) && 
-			    preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["editarEmail"]) &&
-                preg_match('/^[#\.\-a-zA-Z0-9ñÑ ]+$/', $_POST["editarDireccion"])){
+            if( preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["editarEmail"])){
 
-                    $tabla = "hospitales";
+                    $tabla = "hospital";
 
-                    $datos = array( "id"=>$_POST["idHospital"],                    
+                    $datos = array( "idhospital"=>$_POST["idHospital"],                    
                                     "nombre"=>$_POST["editarHospital"],
                                     "direccion"=>$_POST["editarDireccion"],
                                     "telefono"=>$_POST["editarTelefono"],
-                                    "email"=>$_POST["editarEmail"],
-                                    "contacto"=>$_POST["editarContacto"]);
+                                    "email"=>$_POST["editarEmail"]);
 
                     $respuesta = ModeloHospitales::mdlEditarHospital($tabla, $datos);
 
@@ -166,7 +160,7 @@ class ControladorHospitales{
 
         if(isset($_GET["idHospital"])){
 
-            $tabla = "hospitales";
+            $tabla = "hospital";
 
             $datos = $_GET["idHospital"];
 
