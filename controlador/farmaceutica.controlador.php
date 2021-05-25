@@ -6,7 +6,7 @@ class ControladorFarmaceuticas{
     // SE CREA EL METODO MOSTRAR FARMACEUTICAS
     static public function ctrMostrarFarmaceuticas($item,$valor){
 
-        $tabla = "farmaceuticas";
+        $tabla = "farmaceutica";
 
         $respuesta = ModeloFarmaceuticas::mdlMostrarFarmaceutica($tabla,$item,$valor);
 
@@ -20,16 +20,12 @@ class ControladorFarmaceuticas{
         if(isset($_POST["nuevaFarmaceutica"])){
 
             if( preg_match('/^[a-zA-ZñÑáéíóú ]+$/', $_POST["nuevoPais"]) &&
-                preg_match('/^[a-zA-ZñÑáéíóú ]+$/', $_POST["nuevaCiudad"]) &&
-			    preg_match('/^[()\-0-9 ]+$/', $_POST["nuevoTelefono"]) && 
-			    preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["nuevoEmail"]) &&
-                preg_match('/^[#\.\-a-zA-Z0-9ñÑ ]+$/', $_POST["nuevaDireccion"])){
+			    preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["nuevoEmail"])){
 
-                    $tabla = "farmaceuticas";
+                    $tabla = "farmaceutica";
 
                     $datos = array( "nombre"=>$_POST["nuevaFarmaceutica"],
                                     "pais"=>$_POST["nuevoPais"],
-                                    "ciudad"=>$_POST["nuevaCiudad"],
                                     "direccion"=>$_POST["nuevaDireccion"],
                                     "telefono"=>$_POST["nuevoTelefono"],
                                     "email"=>$_POST["nuevoEmail"]);
@@ -96,17 +92,13 @@ class ControladorFarmaceuticas{
         if(isset($_POST["editarFarmaceutica"])){
 
             if( preg_match('/^[a-zA-ZñÑáéíóú ]+$/', $_POST["editarPais"]) &&
-                preg_match('/^[a-zA-ZñÑáéíóú ]+$/', $_POST["editarCiudad"]) &&
-			    preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["editarEmail"]) &&
-			    preg_match('/^[()\-0-9 ]+$/', $_POST["editarTelefono"]) && 
-                preg_match('/^[#\.\-a-zA-Z0-9ñÑáéíóú, ]+$/', $_POST["editarDireccion"])){
+			    preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["editarEmail"])){
 
-                    $tabla = "farmaceuticas";
+                    $tabla = "farmaceutica";
 
-                    $datos = array( "id"=>$_POST["idFarmaceutica"],
+                    $datos = array( "idfarmaceutica"=>$_POST["idFarmaceutica"],
                                     "nombre"=>$_POST["editarFarmaceutica"],
                                     "pais"=>$_POST["editarPais"],
-                                    "ciudad"=>$_POST["editarCiudad"],
                                     "direccion"=>$_POST["editarDireccion"],
                                     "telefono"=>$_POST["editarTelefono"],
                                     "email"=>$_POST["editarEmail"]);
@@ -172,7 +164,7 @@ class ControladorFarmaceuticas{
 
         if(isset($_GET["idFarmaceutica"])){
 
-            $tabla = "farmaceuticas";
+            $tabla = "farmaceutica";
 
             $datos = $_GET["idFarmaceutica"];
 

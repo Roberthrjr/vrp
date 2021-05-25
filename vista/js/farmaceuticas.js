@@ -17,10 +17,9 @@ $(".tablas").on("click", ".btnEditarFarmaceutica", function(){
         dataType: "json",
         success:function(respuesta){
 
-            $("#idFarmaceutica").val(respuesta["id"]);
+            $("#idFarmaceutica").val(respuesta["idfarmaceutica"]);
             $("#editarFarmaceutica").val(respuesta["nombre"]);
             $("#editarPais").val(respuesta["pais"]);
-            $("#editarCiudad").val(respuesta["ciudad"]);
             $("#editarDireccion").val(respuesta["direccion"]);
             $("#editarTelefono").val(respuesta["telefono"]);
             $("#editarEmail").val(respuesta["email"]);

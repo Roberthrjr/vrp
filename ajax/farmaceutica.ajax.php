@@ -11,7 +11,7 @@ class AjaxFarmaceuticas{
     // SE CREA EL METODO AJAX EDITAR FARMACEUTICA
     public function ajaxEditarFarmaceutica(){
 
-        $item = "id";
+        $item = "idfarmaceutica";
         $valor = $this->idFarmaceutica;
 
         $respuesta = ControladorFarmaceuticas::ctrMostrarFarmaceuticas($item,$valor);

@@ -39,7 +39,6 @@
               <th>#</th>
               <th>Nombre</th>
               <th>Pais</th>
-              <th>Ciudad</th>
               <th>Dirección</th>
               <th>telefono</th>
               <th>email</th>
@@ -62,17 +61,16 @@
                         <td>'.($key+1).'</td>
                         <td>'.$value["nombre"].'</td>
                         <td>'.$value["pais"].'</td>
-                        <td>'.$value["ciudad"].'</td>
                         <td>'.$value["direccion"].'</td>
                         <td>'.$value["telefono"].'</td>
                         <td>'.$value["email"].'</td>
                         <td>
                           <div class="btn-group">
-                            <button class="btn btn-warning btnEditarFarmaceutica" data-toggle="modal" data-target="#modalEditarFarmaceutica" idFarmaceutica="'.$value["id"].'">
+                            <button class="btn btn-warning btnEditarFarmaceutica" data-toggle="modal" data-target="#modalEditarFarmaceutica" idFarmaceutica="'.$value["idfarmaceutica"].'">
                               <i class="fas fa-pencil-alt"></i>
                             </button>
                           
-                            <button class="btn btn-danger btnEliminarFarmaceutica" idFarmaceutica="'.$value["id"].'">
+                            <button class="btn btn-danger btnEliminarFarmaceutica" idFarmaceutica="'.$value["idfarmaceutica"].'">
                               <i class="fas fa-times"></i>
                             </button>
                           </div>
@@ -131,18 +129,6 @@
                 </span>
               </div>
               <input type="text" class="form-control" name="nuevoPais" placeholder="Ingresar País" required>
-            </div>
-          </div>
-
-          <!-- ENTRADA PAR LA CIUDAD -->
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-city"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" name="nuevaCiudad" placeholder="Ingresar Ciudad" required>
             </div>
           </div>
 
@@ -250,18 +236,6 @@
                   </span>
                 </div>
                 <input type="text" class="form-control" id="editarPais" name="editarPais" required>
-              </div>
-            </div>
-
-            <!-- ENTRADA PAR LA CIUDAD -->
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fas fa-city"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" id="editarCiudad" name="editarCiudad" required>
               </div>
             </div>
 
