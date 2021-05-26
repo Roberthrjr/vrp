@@ -108,6 +108,7 @@
                 $_GET["ruta"] == "farmaceuticas" ||
                 $_GET["ruta"] == "hospitales" ||
                 $_GET["ruta"] == "vacunas" ||
+                $_GET["ruta"] == "vacuna-has-hospital" ||
                 $_GET["ruta"] == "pacientes"){
                 
                 include "modulos/".$_GET["ruta"].".php";
@@ -127,11 +128,12 @@
         // PIE DEL CUERPO DEL DOCUMENTO
         include "modulos/footer.php";
         echo '</div>';
-        echo '<script src="vista/js/plantilla.js"></script>';
         echo '<script src="vista/js/farmaceuticas.js"></script>';
         echo '<script src="vista/js/hospitales.js"></script>';
         echo '<script src="vista/js/vacunas.js"></script>';
         echo '<script src="vista/js/pacientes.js"></script>';
+        echo '<script src="vista/js/vacuna-has-hospital.js"></script>';
+        echo '<script src="vista/js/plantilla.js"></script>';
         echo '</body>'; 
 
     ?>

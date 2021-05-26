@@ -61,6 +61,16 @@
           </a>
         </li>
 
+        <!-- VACUNACION -->
+        <li class="nav-item">
+          <a href="vacuna-has-hospital" class="nav-link">
+            <i class="nav-icon fas fa-user-injured"></i>
+            <p>
+              Vacunación
+            </p>
+          </a>
+        </li>
+
           <!-- PACIENTES -->
           <!-- <li class="nav-item">
             <a href="#" class="nav-link">
