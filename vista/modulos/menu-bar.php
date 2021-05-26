@@ -11,16 +11,6 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-        <!-- USUARIOS -->
-        <li class="nav-item">
-          <a href="usuarios" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              Usuarios
-            </p>
-          </a>
-        </li>
-
         <!-- HOSPITALES O CLINICAS -->
         <li class="nav-item">
           <a href="hospitales" class="nav-link">
