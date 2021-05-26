@@ -36,13 +36,12 @@ class ModeloVacunas{
     // SE CREA EL METODO PARA CREAR VACUNA
     static public function mdlCrearVacuna($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, fabricante, modAdministracion, refrigeracion, efectividad) VALUES (:nombre, :fabricante, :modAdministracion, :refrigeracion, :efectividad)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, efectividad, stock, farmaceutica_idfarmaceutica) VALUES (:nombre, :efectividad, :stock, :farmaceutica_idfarmaceutica)");
 
         $stmt->bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
-        $stmt->bindParam(":fabricante",$datos["fabricante"],PDO::PARAM_STR);
-        $stmt->bindParam(":modAdministracion",$datos["modAdministracion"],PDO::PARAM_STR);
-        $stmt->bindParam(":refrigeracion",$datos["refrigeracion"],PDO::PARAM_STR);
         $stmt->bindParam(":efectividad",$datos["efectividad"],PDO::PARAM_STR);
+        $stmt->bindParam(":stock",$datos["stock"],PDO::PARAM_STR);
+        $stmt->bindParam(":farmaceutica_idfarmaceutica",$datos["farmaceutica_idfarmaceutica"],PDO::PARAM_STR);
 
         if($stmt->execute()){
 
@@ -62,14 +61,13 @@ class ModeloVacunas{
     // SE CREA EL METODO PARA EDITAR VACUNA
     static public function mdlEditarVacuna($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, fabricante=:fabricante, modAdministracion=:modAdministracion, refrigeracion=:refrigeracion, efectividad=:efectividad WHERE id=:id");
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, efectividad=:efectividad, stock=:stock, farmaceutica_idfarmaceutica=:farmaceutica_idfarmaceutica WHERE idvacuna=:idvacuna");
 
-        $stmt->bindParam(":id",$datos["id"],PDO::PARAM_STR);
+        $stmt->bindParam(":idvacuna",$datos["idvacuna"],PDO::PARAM_STR);
         $stmt->bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
-        $stmt->bindParam(":fabricante",$datos["fabricante"],PDO::PARAM_STR);
-        $stmt->bindParam(":modAdministracion",$datos["modAdministracion"],PDO::PARAM_STR);
-        $stmt->bindParam(":refrigeracion",$datos["refrigeracion"],PDO::PARAM_STR);
         $stmt->bindParam(":efectividad",$datos["efectividad"],PDO::PARAM_STR);
+        $stmt->bindParam(":stock",$datos["stock"],PDO::PARAM_STR);
+        $stmt->bindParam(":farmaceutica_idfarmaceutica",$datos["farmaceutica_idfarmaceutica"],PDO::PARAM_STR);
 
         if($stmt->execute()){
 
@@ -89,9 +87,9 @@ class ModeloVacunas{
     // SE CREA EL METODO PARA ELIMINAR VACUNA
     static public function mdlEliminarVacuna($tabla,$datos){
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idvacuna = :idvacuna");
 
-        $stmt->bindParam(":id", $datos, PDO::PARAM_STR);
+        $stmt->bindParam(":idvacuna", $datos, PDO::PARAM_STR);
 
         if($stmt->execute()){
             

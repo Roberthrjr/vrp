@@ -6,7 +6,7 @@ class ControladorVacunas{
     // SE CREA EL METODO MOSTRAR VACUNA
     static public function ctrMostrarVacunas($item,$valor){
 
-        $tabla = "vacunas";
+        $tabla = "vacuna";
 
         $respuesta = ModeloVacunas::mdlMostrarVacunas($tabla,$item,$valor);
 
@@ -19,16 +19,14 @@ class ControladorVacunas{
 
         if(isset($_POST["nuevaVacuna"])){
 
-            if( preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["nuevaVacuna"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["nuevaFabricante"])){
+            if( preg_match('/^[a-zA-Z0-9ñÑáéíóú ]+$/', $_POST["nuevaVacuna"])){
 
-                    $tabla = "vacunas";
+                    $tabla = "vacuna";
 
                     $datos = array( "nombre"=>$_POST["nuevaVacuna"],
-                                    "fabricante"=>$_POST["nuevaFabricante"],
-                                    "modAdministracion"=>$_POST["modAdministracion"],
-                                    "refrigeracion"=>$_POST["nuevoRefrigeracion"],
-                                    "efectividad"=>$_POST["nuevoEfectividad"]);
+                                    "efectividad"=>$_POST["nuevoEfectividad"],
+                                    "stock"=>$_POST["nuevoStock"],
+                                    "farmaceutica_idfarmaceutica"=>$_POST["nuevaFarmaceutica"]);
 
                     $respuesta = ModeloVacunas::mdlCrearVacuna($tabla, $datos);
 
@@ -91,17 +89,15 @@ class ControladorVacunas{
 
         if(isset($_POST["editarVacuna"])){
 
-            if( preg_match('/^[#\.\-a-zA-Z0-9ñÑ ]+$/', $_POST["editarVacuna"]) &&
-                preg_match('/^[#\.\-a-zA-Z0-9ñÑ ]+$/', $_POST["editarFabricante"])){
+            if( preg_match('/^[#\.\-a-zA-Z0-9ñÑ ]+$/', $_POST["editarVacuna"])){
 
-                    $tabla = "vacunas";
+                    $tabla = "vacuna";
 
-                    $datos = array( "id"=>$_POST["idVacuna"],                    
+                    $datos = array( "idvacuna"=>$_POST["idVacuna"],                    
                                     "nombre"=>$_POST["editarVacuna"],
-                                    "fabricante"=>$_POST["editarFabricante"],
-                                    "modAdministracion"=>$_POST["editarModAdministracion"],
-                                    "refrigeracion"=>$_POST["editarRefrigeracion"],
-                                    "efectividad"=>$_POST["editarEfectividad"]);
+                                    "efectividad"=>$_POST["editarEfectividad"],
+                                    "stock"=>$_POST["editarStock"],
+                                    "farmaceutica_idfarmaceutica"=>$_POST["editarFarmaceutica"]);
 
                     $respuesta = ModeloVacunas::mdlEditarVacuna($tabla, $datos);
 
@@ -164,7 +160,7 @@ class ControladorVacunas{
 
         if(isset($_GET["idVacuna"])){
 
-            $tabla = "vacunas";
+            $tabla = "vacuna";
 
             $datos = $_GET["idVacuna"];
 

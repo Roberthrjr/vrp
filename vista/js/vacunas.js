@@ -17,13 +17,29 @@ $(".tablas").on("click", ".btnEditarVacuna", function(){
         processData: false,
         dataType: "json",
         success:function(respuesta){
-
-            $("#idVacuna").val(respuesta["id"]);
+            
+            $("#idVacuna").val(respuesta["idvacuna"]);
             $("#editarVacuna").val(respuesta["nombre"]);
-            $("#editarFabricante").val(respuesta["fabricante"]);
-            $("#editarModAdministracion").val(respuesta["modAdministracion"]);
-            $("#editarRefrigeracion").val(respuesta["refrigeracion"]);
             $("#editarEfectividad").val(respuesta["efectividad"]);
+            $("#editarStock").val(respuesta["stock"]);
+
+            var datosFarmaceutica = new FormData();
+            datosFarmaceutica.append("idFarmaceutica", respuesta["farmaceutica_idfarmaceutica"])
+
+            $.ajax({
+
+                url:"ajax/farmaceutica.ajax.php",
+                method:"POST",
+                data: datosFarmaceutica,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success:function(respuesta){
+                    $("#editarFarmaceutica").val(respuesta["idfarmaceutica"]);
+                    $("#editarFarmaceutica").html(respuesta["nombre"]);
+                }
+            })
             
         }
     })

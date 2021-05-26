@@ -38,10 +38,9 @@
             <tr>
               <th>#</th>
               <th>Nombre</th>
-              <th>fabricante</th>
-              <th>Modo de modAdministración</th>
-              <th>Refrigeracion</th>
               <th>Efectividad</th>
+              <th>Stock</th>
+              <th>Farmaceutica</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -60,17 +59,22 @@
                 echo '<tr>
                         <td>'.($key+1).'</td>
                         <td>'.$value["nombre"].'</td>
-                        <td>'.$value["fabricante"].'</td>
-                        <td>'.$value["modAdministracion"].'</td>
-                        <td>'.$value["refrigeracion"].'</td>
                         <td>'.$value["efectividad"].'</td>
+                        <td>'.$value["stock"].'</td>';
+
+                        $item = "idfarmaceutica";
+                        $valor = $value["farmaceutica_idfarmaceutica"];
+
+                        $farmaceutica = ControladorFarmaceuticas::ctrMostrarFarmaceuticas($item, $valor);
+
+                        echo '<td>'.$farmaceutica["nombre"].'</td>
                         <td>
                           <div class="btn-group">
-                            <button class="btn btn-warning btnEditarVacuna" data-toggle="modal" data-target="#modalEditarVacuna" idVacuna="'.$value["id"].'">
+                            <button class="btn btn-warning btnEditarVacuna" data-toggle="modal" data-target="#modalEditarVacuna" idVacuna="'.$value["idvacuna"].'">
                               <i class="fas fa-pencil-alt"></i>
                             </button>
                           
-                            <button class="btn btn-danger btnEliminarVacuna" idVacuna="'.$value["id"].'">
+                            <button class="btn btn-danger btnEliminarVacuna" idVacuna="'.$value["idvacuna"].'">
                               <i class="fas fa-times"></i>
                             </button>
                           </div>
@@ -120,43 +124,7 @@
             </div>
           </div>
 
-          <!-- ENTRADA PARA LA DIRECCION -->
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-vial"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" name="nuevaFabricante" placeholder="Ingresar Fabricante" required>
-            </div>
-          </div>
-
-          <!-- ENTRADA PARA EL TELEFONO -->
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-question-circle"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" name="modAdministracion" placeholder="Modo de administracion" required>
-            </div>
-          </div>
-
-          <!-- ENTRADA PARA EL EMAIL -->
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-temperature-low"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" name="nuevoRefrigeracion" placeholder="refrigeracion" required>
-            </div>
-          </div>
-
-          <!-- ENTRADA PARA EL CONTACTO -->
+          <!-- ENTRADA PARA LA EFECTIVIDAD -->
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-prepend">
@@ -164,7 +132,48 @@
                   <i class="fas fa-percentage"></i>
                 </span>
               </div>
-              <input type="text" class="form-control" name="nuevoEfectividad" placeholder="Efectividad" required>
+              <input type="text" class="form-control" name="nuevoEfectividad" placeholder="Ingresar Efectividad" required>
+            </div>
+          </div>
+
+          <!-- ENTRADA PARA EL STOCK -->
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-check"></i>
+                </span>
+              </div>
+              <input type="number" min="0" class="form-control" name="nuevoStock" placeholder="Stock" required>
+            </div>
+          </div>
+
+          <!-- ENTRADA PARA EL FARMACEUTICA -->
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-book-medical"></i>
+                </span>
+              </div>
+              <select class="form-control" id="nuevaFarmaceutica" name="nuevaFarmaceutica" required>
+                  <option value="">Seleccionar Farmaceutica</option>
+
+                  <?php
+                  
+                  $item = null;
+                  $valor = null;
+
+                  $farmaceutica = ControladorFarmaceuticas::ctrMostrarFarmaceuticas($item,$valor);
+
+                  foreach ($farmaceutica as $key => $value){
+
+                    echo '<option value="'.$value["idfarmaceutica"].'">'.$value["nombre"].'</option>';
+
+                  }
+                  
+                  ?>
+                </select>
             </div>
           </div>
 
@@ -227,57 +236,46 @@
               </div>
             </div>
 
-            <!-- ENTRADA PARA LA FABRICANTE -->
+            <!-- ENTRADA PARA LA EFECTIVIDAD -->
             <div class="form-group">
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                    <i class="fas fa-vial"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" id="editarFabricante" name="editarFabricante" required>
-              </div>
-            </div>
-
-            <!-- ENTRADA PARA EL TELEFONO -->
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fas fa-question-circle"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" id="editarModAdministracion" name="editarModAdministracion" required>
-              </div>
-            </div>
-
-            <!-- ENTRADA PARA EL EMAIL -->
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fas fa-temperature-low"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" id="editarRefrigeracion" name="editarRefrigeracion" required>
-              </div>
-            </div>
-            
-            <!-- ENTRADA PARA EL CONTACTO -->
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fas fa-percentage"></i>
+                    <i class="fas fa-percent"></i>
                   </span>
                 </div>
                 <input type="text" class="form-control" id="editarEfectividad" name="editarEfectividad" required>
               </div>
             </div>
 
+            <!-- ENTRADA PARA EL STOCK -->
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </div>
+                <input type="number" min="0" class="form-control" id="editarStock" name="editarStock" required>
+              </div>
+            </div>
+          
+          <!-- ENTRADA PARA FARMACEUTICA -->
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-book-medical"></i>
+                </span>
+              </div>
+              <select class="form-control" name="editarFarmaceutica" readonly required>
+                  <option id="editarFarmaceutica"></option>
+                </select>
+            </div>
+          </div>
+
           </div>
         </div>
-
 
         <!-- PIE DEL MODAL -->
         <div class="modal-footer justify-content-between">
